@@ -36,6 +36,9 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  # RSpec and Capybara related gems
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 group :development do
