@@ -1,3 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
 AllCops:
   Exclude:
     - "db/**/*"
@@ -7,11 +14,13 @@ AllCops:
     - "Rakefile"
     - "README.md"
     - "node_modules/**/*"
+    - 'script/**/*'
+    - 'bin/**/*'
 
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 100
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
@@ -27,6 +36,9 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
+  Exclude:
+    - config/**/*
+    - spec/**/*
 
 Style/Documentation:
   Enabled: false
@@ -48,3 +60,7 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
