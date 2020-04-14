@@ -16,3 +16,12 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+/* variables */
+$atomic-purple: #8e24aa;
+$atomic-orange: #ff7043;
+$atomic-dark-gray: #545454;
+$atomic-light-gray: #737373;
+
+$standard-margin: 8px;
+$double-margin: 2 * $standard-margin;
