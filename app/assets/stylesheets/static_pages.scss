@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import 'application';
 
-/* home */
+/* Home */
 
 .home-container {
   height: 100vh;
@@ -23,17 +23,11 @@
   border-radius: 10px;
   padding: 0;
   a {
+    color: white;
     border-radius: 10px;
     width: 100%;
-    text-decoration: none;
-    color: white;
-    font-size: 48px;
     padding: $double-margin 0;
   }
-}
-
-.home-log-in-button {
-  background-color: $atomic-purple;
 }
 
 .home-sign-up-button {
@@ -44,3 +38,5 @@
     color: $atomic-light-gray;
   }
 }
+
+/* Log In */

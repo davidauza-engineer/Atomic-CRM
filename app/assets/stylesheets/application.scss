@@ -25,3 +25,34 @@ $atomic-light-gray: #737373;
 
 $standard-margin: 8px;
 $double-margin: 2 * $standard-margin;
+
+/* Tags */
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+/* Classes */
+
+.atomic-purple {
+  background-color: $atomic-purple;
+}
+
+.top-bar {
+  padding: $double-margin;
+}
+
+.top-bar-title {
+  color: white;
+  font-size: 48px;
+}
+
+.top-bar-action {
+  color: white;
+  font-size: 40px;
+  padding-top: 4px;
+}
