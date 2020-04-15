@@ -6,7 +6,7 @@
 /* Home */
 
 .home-container {
-  height: 100vh;
+  background-color: white;
 }
 
 .home-logo-container {
@@ -15,12 +15,13 @@
 
 .home-logo {
   width: 75%;
-  max-width: 1080px;
+  max-width: 780px;
 }
 
 .home-button {
   width: 90%;
   border-radius: 10px;
+  border: none;
   padding: 0;
   a {
     color: white;
@@ -38,5 +39,3 @@
     color: $atomic-light-gray;
   }
 }
-
-/* Log In */

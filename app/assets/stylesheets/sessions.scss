@@ -1,3 +1,13 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.password-recovery {
+  margin-top: $extra-large-margin;
+  font-size: $font-small;
+  color: $atomic-light-gray;
+  &:hover {
+    color: $atomic-light-gray;
+  }
+}
