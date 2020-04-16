@@ -5,11 +5,11 @@ RSpec.describe SessionsController, type: :controller do
   let(:base_title) { ' | Atomic CRM' }
   let(:user) do
     User.create(email: 'example@test.com', password: 'secret_password',
-                password_confirmation: 'secret_password')
+                name: 'test_user')
   end
 
   def log_in_user
-    post :create, params: { email: user.email, password: user.password }
+    post :create, params: { email: user.email, password: user.password, name: user.name }
   end
 
   describe 'index method' do

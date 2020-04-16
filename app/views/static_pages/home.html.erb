@@ -1,5 +1,5 @@
 <% provide :title, 'Home' %>
-<div class="page-view home-container">
+<div class="home-container">
   <div class="home-logo-container d-flex align-items-center justify-content-center">
     <%= image_tag 'atomic_crm_logo.png', class: 'home-logo'%>
   </div>
@@ -7,6 +7,6 @@
     <%= link_to 'Log In'.upcase, login_path %>
   </button>
   <button class="home-button home-sign-up-button d-flex mx-auto justify-content-center top-bar-title">
-    <%= link_to 'Sign Up'.upcase, signup_path %>
+    <%= link_to 'Sign Up'.upcase, signup_path, class: 'gray-link' %>
   </button>
 </div>

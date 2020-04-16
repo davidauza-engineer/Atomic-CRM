@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # users
   resources :users
   get 'signup', to: 'users#new', as: 'signup'
+  post 'signup', to: 'users#create'
+  get 'picture-upload', to: 'users#upload_image'
   # root
   root 'static_pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

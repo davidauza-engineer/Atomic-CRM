@@ -45,11 +45,22 @@ a {
   }
 }
 
+input {
+  background-color: transparent;
+  border: none;
+}
+
 ::placeholder {
   color: $atomic-light-gray;
 }
 
 /* Classes */
+
+.gray-link {
+  &:hover {
+    color: $atomic-light-gray;
+  }
+}
 
 .alert {
   margin-bottom: 0;
@@ -58,6 +69,10 @@ a {
 
 .atomic-purple {
   background-color: $atomic-purple;
+}
+
+.atomic-light-gray {
+  color: $atomic-light-gray;
 }
 
 .top-bar {
