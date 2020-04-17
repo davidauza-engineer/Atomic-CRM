@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import 'application';
 
+/* Sign Up page */
+
 .picture-upload-text {
   margin-left: $triple-margin;
 }
@@ -10,17 +12,46 @@
 /* Profile page */
 
 .profile-view {
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(to bottom left, $atomic-purple 30%, $atomic-purple-medium 70%);
 }
 
 .profile-content-container {
-  position: relative;
-  top: 2 * $extra-large-margin;
+  padding-top: 2 * $extra-large-margin;
 }
 
 .profile-name {
   font-size: $font-extra-large;
   color: white;
   margin-top: $standard-margin;
+  max-width: calc(100% - 128px);
+}
+
+.profile-nav {
+  margin-top: $extra-large-margin + $double-margin;
+}
+
+.profile-links {
+  color: white;
+  font-size: $font-extra-large;
+  margin-left: $extra-large-margin;
+  margin-right: $extra-large-margin;
+
+  &:hover {
+    background-color: $atomic-purple;
+    border-radius: 10px;
+  }
+}
+
+.profile-links-text {
+  margin-left: $medium-margin;
+}
+
+.profile-divider {
+  height: 2px;
+  background-color: white;
+  // profile-links-margin-left + vector-width + profile-links-text-margin-left = 216px
+  margin: $medium-margin $extra-large-margin $medium-margin 216px;
+  // profile-divider-left-margin + profile-divider-right-margin = 280px
+  width: calc(100% - 280px);
 }
