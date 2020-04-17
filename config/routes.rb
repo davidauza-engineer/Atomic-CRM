@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   post 'signup', to: 'users#create'
   get 'uploadpicture', to: 'users#upload_picture'
-  get '/profile', to: 'users#show', as: 'profile'
+  get 'profile', to: 'users#show', as: 'profile'
+  # transactions
+  get '/transactions', to: 'transactions#index'
+  get '/transactions/uncategorized', to: 'transactions#uncategorized'
+  # categories
+  get '/categories', to: 'categories#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
