@@ -6,3 +6,21 @@
 .picture-upload-text {
   margin-left: $triple-margin;
 }
+
+/* Profile page */
+
+.profile-view {
+  height: 100vh;
+  background-image: linear-gradient(to bottom left, $atomic-purple 30%, $atomic-purple-medium 70%);
+}
+
+.profile-content-container {
+  position: relative;
+  top: 2 * $extra-large-margin;
+}
+
+.profile-name {
+  font-size: $font-extra-large;
+  color: white;
+  margin-top: $standard-margin;
+}

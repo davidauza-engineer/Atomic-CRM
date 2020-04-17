@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: :show
+
   def index
     redirect_to signup_url
   end
@@ -20,6 +22,10 @@ class UsersController < ApplicationController
   def upload_picture
     flash.notice = 'Picture upload will be available soon.'
     redirect_to signup_url
+  end
+
+  def show
+    @user = User.find(session[:user_id])
   end
 
   private

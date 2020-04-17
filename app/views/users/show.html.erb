@@ -1,0 +1,11 @@
+<% provide(:title, 'Profile') %>
+<div class="profile-view">
+  <div class="profile-content-container">
+    <div class="d-flex justify-content-center">
+      <%= display_svg('user_large.svg') %>
+    </div>
+    <div class="d-flex">
+      <span class="mx-auto profile-name"><%= @user.name %></span>
+    </div>
+  </div>
+</div>
