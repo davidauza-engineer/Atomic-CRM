@@ -14,14 +14,14 @@ RSpec.describe 'sessions/new.html.erb', type: :view do
   end
 
   it 'contains an email field' do
-    expect(rendered).to match(/<input placeholder="Email"/)
+    expect(rendered).to match(/name="email"/)
   end
 
   it 'contains a password field' do
-    expect(rendered).to match(/<input placeholder="Password"/)
+    expect(rendered).to match(/name="password"/)
   end
 
   it 'contains a forgot password link' do
-    expect(rendered).to match(%r{<a href="/password-reset"})
+    expect(rendered).to match(%r{<a href="/resetpassword"})
   end
 end

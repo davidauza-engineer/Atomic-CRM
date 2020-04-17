@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'StaticPages', type: :view do
+RSpec.describe 'static_pages/home.html.erb', type: :view do
   describe 'Home page' do
     before do
       render template: 'static_pages/home.html.erb'
