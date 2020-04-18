@@ -32,10 +32,10 @@ $medium-margin: 32px;
 $large-margin: 40px;
 $extra-large-margin: 64px;
 
-$font-small: 40px;
-$font-medium: 46px;
-$font-large: 48px;
-$font-extra-large: 56px;
+$font-small: 48px;
+$font-medium: 54px;
+$font-large: 56px;
+$font-extra-large: 64px;
 
 /* Tags */
 
@@ -78,13 +78,28 @@ input {
   color: $atomic-light-gray;
 }
 
+.title {
+  color: white;
+  font-size: $font-large;
+}
+
 .top-bar {
-  padding: $triple-margin $medium-margin $triple-margin $standard-margin;
+  padding: $triple-margin $standard-margin;
 }
 
 .top-bar-title {
-  color: white;
-  font-size: $font-large;
+  position: absolute;
+  top: 39px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.top-bar-link {
+  position: relative;
+  z-index: 2;
 }
 
 .top-bar-action {
@@ -94,11 +109,16 @@ input {
 }
 
 .page-view {
-  height: 100vh;
+  min-height: 100vh;
   background-color: $atomic-purple-light;
 }
 
 .form-container {
+  padding-bottom: 2 * $extra-large-margin;
+  background-color: transparent;
+}
+
+.form {
   margin-top: $extra-large-margin;
   border-top: 1px solid $atomic-light-gray;
   border-bottom: 1px solid $atomic-light-gray;

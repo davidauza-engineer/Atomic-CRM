@@ -7,23 +7,25 @@
 
 .home-container {
   background-color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.home-logo-container {
-  height: 70%;
+.logo-container {
+  min-height: 70vh;
 }
 
 .home-logo {
-  width: 75%;
-  max-width: 780px;
+  width: 80%;
+  max-width: 960px;
 }
 
 .home-button {
   width: 90%;
+  max-width: 1200px;
   border-radius: 10px;
   border: none;
   padding: 0;
+  margin-bottom: $standard-margin;
 
   a {
     color: white;
@@ -36,7 +38,7 @@
 .home-sign-up-button {
   background-color: white;
   border: none;
-  margin-top: $standard-margin;
+  margin-bottom: $large-margin;
 
   a {
     color: $atomic-light-gray;

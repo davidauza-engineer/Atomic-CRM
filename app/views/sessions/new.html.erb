@@ -1,14 +1,16 @@
 <% provide(:title, 'Log In') %>
+<h1 class="title top-bar-title">LOGIN</h1>
 <div class="page-view">
   <div class="d-flex top-bar atomic-purple align-items-center justify-content-between">
-    <a href="<%= root_url %>">
+    <a href="<%= root_url %>" class="top-bar-link">
       <%= display_svg('white_back_arrow.svg') %>
     </a>
-    <span class="top-bar-title">LOGIN</span>
-    <%= submit_tag 'Log In', form: 'login-form', class: 'top-bar-action' %>
+    <%= submit_tag 'Log In', form: 'login-form', class: 'top-bar-link top-bar-action' %>
   </div>
 
-  <%= form_with url: sessions_path, local: true, class: 'form-container', id: 'login-form' do |f| %>
+  <%= render 'layouts/notifications' %>
+
+  <%= form_with url: sessions_path, local: true, class: 'form', id: 'login-form' do |f| %>
     <%= f.email_field :email, placeholder: 'Email', class: 'form-input' %>
     <div class="form-divider"></div>
     <%= f.password_field :password, placeholder: 'Password', class: 'form-input'%>
