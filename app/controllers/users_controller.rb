@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: :show
+  before_action :authorize, only: :profile
 
   def index
     redirect_to signup_url
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     redirect_to signup_url
   end
 
-  def show
+  def profile
     @user = User.find(session[:user_id])
   end
 

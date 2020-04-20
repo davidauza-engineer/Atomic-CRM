@@ -2,17 +2,17 @@ Rails.application.routes.draw do
   # root
   root 'static_pages#home'
   # sessions
-  resources :sessions
+  resources :sessions, only: [:index, :new, :create, :destroy]
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   get 'resetpassword', to: 'sessions#reset_password'
   # users
-  resources :users
+  resources :users, only: [:index, :new, :create]
   get 'signup', to: 'users#new', as: 'signup'
   post 'signup', to: 'users#create'
+  get 'profile', to: 'users#profile'
   get 'uploadpicture', to: 'users#upload_picture'
-  get 'profile', to: 'users#show', as: 'profile'
   # transactions
   get '/transactions', to: 'transactions#index'
   get '/transactions/uncategorized', to: 'transactions#uncategorized'
