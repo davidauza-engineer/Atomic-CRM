@@ -20,17 +20,27 @@ RSpec.describe UsersController do
   end
 
   describe 'new method' do
-    before do
-      get :new
+    context 'when user is logged in' do
+      it 'redirects to root_url' do
+        session[:user_id] = User.create(user_hash[:user]).id
+        get :new
+        expect(response).to redirect_to(root_url)
+      end
     end
 
-    it 'responds with success when reached with GET' do
-      expect(response).to have_http_status(:ok)
-    end
+    context 'when user is not logged in' do
+      before do
+        get :new
+      end
 
-    it 'has the right title' do
-      title = 'Sign Up' + base_title
-      expect(response.body).to match(/#{title}/)
+      it 'responds with success when reached with GET' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'has the right title' do
+        title = 'Sign Up' + base_title
+        expect(response.body).to match(/#{title}/)
+      end
     end
   end
 
@@ -102,10 +112,18 @@ RSpec.describe UsersController do
     end
   end
 
-  describe 'upload_image method' do
+  describe 'upload_picture method' do
     it 'redirects to signup_url' do
       get :upload_picture
       expect(response).to redirect_to(signup_url)
+    end
+  end
+
+  describe 'profile method' do
+    it 'successfully retrieves the right user from the database' do
+      user = User.create(user_hash[:user])
+      session[:user_id] = user.id
+      expect(controller.profile).to eq user
     end
   end
 

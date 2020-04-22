@@ -12,6 +12,17 @@ RSpec.describe ApplicationController do
     end
   end
 
+  describe 'logged_in? method' do
+    it 'returns true if the user is logged in' do
+      session[:user_id] = user.id
+      expect(controller.send(:logged_in?)).to eq true
+    end
+
+    it 'returns false if the user is not logged in' do
+      expect(controller.send(:logged_in?)).to eq false
+    end
+  end
+
   describe 'current_user method' do
     it 'returns the appropriate user if it is logged in' do
       controller.log_in_user(user)

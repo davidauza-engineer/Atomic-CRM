@@ -3,7 +3,12 @@ class SessionsController < ApplicationController
     redirect_to login_url
   end
 
-  def new; end
+  def new
+    return unless logged_in?
+
+    flash.notice = 'You are already logged in.'
+    redirect_to root_url
+  end
 
   def create
     user = User.find_by(email: params[:email].downcase)

@@ -20,16 +20,26 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe 'new method' do
-    before do
-      get :new
+    context 'when logged in' do
+      it 'redirects to root_url when a user is logged in' do
+        session[:user_id] = user.id
+        get :new
+        expect(response).to redirect_to(root_url)
+      end
     end
 
-    it 'responds with success when reached with GET' do
-      expect(response).to have_http_status(:ok)
-    end
+    context 'when not logged in' do
+      before do
+        get :new
+      end
 
-    it 'has the right title' do
-      expect(response.body).to have_title 'Log In' + base_title
+      it 'responds with success when reached with GET' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'has the right title' do
+        expect(response.body).to have_title 'Log In' + base_title
+      end
     end
   end
 
