@@ -34,6 +34,10 @@ RSpec.describe 'Routing tests', type: :routing do
       expect(post: '/signup').to route_to(controller: 'users', action: 'create')
     end
 
+    it 'GET /profile correctly route to users#profile' do
+      expect(get: '/profile').to route_to(controller: 'users', action: 'profile')
+    end
+
     it 'GET /uploadpicture correctly routes to users#upload_picture' do
       expect(get: '/uploadpicture').to route_to(controller: 'users', action: 'upload_picture')
     end

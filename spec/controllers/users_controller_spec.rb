@@ -120,10 +120,28 @@ RSpec.describe UsersController do
   end
 
   describe 'profile method' do
-    it 'successfully retrieves the right user from the database' do
-      user = User.create(user_hash[:user])
-      session[:user_id] = user.id
-      expect(controller.profile).to eq user
+    context 'when user is logged in' do
+      let(:user) { User.create(user_hash[:user]) }
+
+      before do
+        session[:user_id] = user.id
+      end
+
+      it 'has http status success' do
+        get :profile
+        expect(response.code).to eq '200'
+      end
+
+      it 'successfully retrieves the right user from the database' do
+        expect(controller.profile).to eq user
+      end
+    end
+
+    context 'when user is not logged in' do
+      it 'redirects to login page' do
+        get :profile
+        expect(response).to redirect_to(login_url)
+      end
     end
   end
 

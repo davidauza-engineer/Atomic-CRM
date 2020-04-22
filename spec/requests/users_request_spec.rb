@@ -28,4 +28,11 @@ RSpec.describe 'Users', type: :request do
       expect(response).to have_http_status(:found)
     end
   end
+
+  describe 'GET /profile' do
+    it 'redirects to login_url' do
+      get '/profile'
+      expect(response).to have_http_status(:found)
+    end
+  end
 end
