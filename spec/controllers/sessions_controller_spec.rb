@@ -61,9 +61,16 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe 'destroy method' do
-    it 'successfully destroy an existing session' do
+    before do
       log_in_user
       delete :destroy
+    end
+
+    it 'successfully destroy an existing session' do
+      expect(session[:user_id]).to eq nil
+    end
+
+    it 'sucessfully redirects to root_url after destroying a session' do
       expect(response).to redirect_to(root_url)
     end
   end
