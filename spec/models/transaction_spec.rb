@@ -8,6 +8,17 @@ RSpec.describe Transaction, type: :model do
   end
 
   describe 'Validations' do
+    context 'with author_id field' do
+      it 'validates a transaction with a valid user id' do
+        expect(transaction.valid?).to eq true
+      end
+
+      it 'rejects a transaction with a non existent user id' do
+        transaction.author_id = 3459
+        expect(transaction.valid?).to eq false
+      end
+    end
+
     context 'with name field' do
       it 'validates a transaction with a name' do
         expect(transaction.valid?).to eq true
@@ -64,6 +75,14 @@ RSpec.describe Transaction, type: :model do
         transaction.amount = nil
         expect(transaction.valid?).to eq false
       end
+    end
+  end
+
+  describe 'Associations' do
+    it 'returns the right user' do
+      transaction.save
+      stored_transaction = described_class.first
+      expect(stored_transaction.user).to eq user
     end
   end
 end

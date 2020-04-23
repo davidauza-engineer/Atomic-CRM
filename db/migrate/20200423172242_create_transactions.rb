@@ -10,7 +10,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
     end
     add_index :transactions, :author_id
     add_foreign_key :transactions, :users, column: :author_id,
-                    primary_key: 'id'
+                    primary_key: :id
     add_index :transactions, :name
   end
 end

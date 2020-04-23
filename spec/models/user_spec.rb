@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'validations tests' do
-    let(:user) do
-      described_class.new(name: 'Test User', email: 'example@test.com', password: 'secret')
-    end
+  let(:user) do
+    described_class.new(name: 'Test User', email: 'example@test.com', password: 'secret')
+  end
 
+  describe 'Validations tests' do
     context 'when right input is submitted' do
       it 'successfully creates a new user' do
         expect(user.valid?).to eq true
@@ -61,6 +61,28 @@ RSpec.describe User, type: :model do
                                        password: nil)
         expect(new_user.valid?).to eq false
       end
+    end
+  end
+
+  describe 'Associations tests' do
+    before do
+      user.save
+      user.transactions.create(amount: 44)
+    end
+
+    it "successfully returns the user's transactions" do
+      expect(user.transactions.first.amount).to eq 44
+    end
+
+    it 'successfully builds a new transaction with the right user id' do
+      transaction = user.transactions.build
+      expect(transaction.author_id).to eq user.id
+    end
+
+    it 'successfully creates a new transaction in the database' do
+      total_transactions = user.transactions.count
+      user.transactions.create
+      expect(user.transactions.count).to eq(total_transactions + 1)
     end
   end
 end
