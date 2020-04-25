@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'uploadpicture', to: 'users#upload_picture'
   # transactions
   resources :transactions, only: [:index, :show]
-  get 'transactions/search', to: 'transactions#search'
+  get 'transactions/actions/search', to: 'transactions#search'
   get '/transactions/category/uncategorized', to: 'transactions#uncategorized'
   # categories
   get '/categories', to: 'categories#index'

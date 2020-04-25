@@ -8,7 +8,7 @@
         <a href="<%= root_path %>" class="top-bar-link">
           <%= display_svg('menu.svg') %>
         </a>
-        <a href="<%= transactions_search_path %>" class="top-bar-link">
+        <a href="<%= transactions_actions_search_path %>" class="top-bar-link">
           <%= display_svg('search.svg') %>
         </a>
       </div>
@@ -33,6 +33,8 @@
     </div>
   </div>
 
+<!--  TODO test cards-->
+<!--  TODO figure out the way to get the category icon -->
   <div class="cards-collection">
     <%= render 'layouts/notifications' %>
     <% @user_transactions.each do |transaction| %>
