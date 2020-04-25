@@ -12,6 +12,10 @@ class TransactionsController < ApplicationController
     @total_balance = @user_transactions.sum(:amount)
   end
 
+  def show
+    @transaction = Transaction.find(params[:id])
+  end
+
   def uncategorized; end
 
   def search
