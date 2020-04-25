@@ -32,6 +32,7 @@ $medium-margin: 32px;
 $large-margin: 40px;
 $extra-large-margin: 64px;
 
+$font-extra-small: 40px;
 $font-small: 48px;
 $font-medium: 54px;
 $font-large: 56px;
@@ -78,6 +79,11 @@ input {
   color: $atomic-light-gray;
 }
 
+.page-view {
+  min-height: 100vh;
+  background-color: $atomic-purple-light;
+}
+
 .title {
   color: white;
   font-size: $font-large;
@@ -108,9 +114,42 @@ input {
   padding-top: 4px;
 }
 
-.page-view {
-  min-height: 100vh;
-  background-color: $atomic-purple-light;
+.sub-bar {
+  padding-top: $double-margin;
+  padding-bottom: $triple-margin;
+}
+
+.sub-bar-link {
+  padding: $standard-margin;
+}
+
+.sub-bar-text {
+  color: white;
+  font-size: $font-small;
+}
+
+.sub-bar-dot {
+  background-color: white;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.sub-bar-second-link {
+  position: absolute;
+  // 24px(top bar margin top) + 96px (vector width) + 24px (top bar margin bottom)
+  // + 16px (sub bar margin top) = 160px
+  top: 160px;
+  right: $triple-margin;
+  z-index: 3;
+
+  span {
+    color: darkgray;
+  }
+
+  .sub-bar-dot {
+    visibility: hidden;
+  }
 }
 
 .form-container {
@@ -139,4 +178,70 @@ input {
   height: 1px;
   background-color: $atomic-light-gray;
   margin-left: $medium-margin;
+}
+
+.wide-card {
+  background-color: white;
+  padding: ($extra-large-margin - 8px) $triple-margin;
+  border-bottom: 2px solid $atomic-light-gray;
+
+  span {
+    font-size: $font-small;
+    color: $atomic-light-gray;
+
+    &:nth-child(2) {
+      color: black;
+      font-weight: 600;
+      max-width: 60%;
+      text-align: right;
+    }
+  }
+}
+
+.cards-collection {
+  //padding-top: 470px;
+}
+
+.card {
+  margin: $medium-margin $medium-margin 0 $medium-margin;
+  color: $atomic-light-gray;
+
+  .card-content-container {
+    padding: $medium-margin;
+  }
+
+  .card-category-image-container {
+    background-color: $atomic-purple-light;
+    width: 25%;
+    height: 0;
+    padding-top: 12.5%;
+    padding-bottom: 12.5%;
+  }
+
+  .card-details-container {
+    width: 55%;
+    padding-left: $medium-margin;
+    padding-right: $medium-margin;
+
+    h1 {
+      font-size: $font-small;
+      font-weight: 500;
+    }
+
+    time {
+      font-size: $font-extra-small;
+    }
+  }
+
+  .card-amount-container {
+    width: 20%;
+    color: black;
+    font-weight: 600;
+    font-size: $font-extra-small;
+    padding-top: $standard-margin;
+  }
+
+  &:hover {
+    background-color: $atomic-purple-light;
+  }
 }

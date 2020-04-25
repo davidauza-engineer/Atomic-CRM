@@ -11,5 +11,43 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe TransactionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'check_first_sub_bar_link method' do
+    it 'returns a path that contains most_recent=true if @most_recent is true' do
+      expect(check_first_sub_bar_link(true)).to match(/most_recent=true/)
+    end
+
+    it 'returns a path that contains most_recent=false if @most_recent is false' do
+      expect(check_first_sub_bar_link(false)).to match(/most_recent=false/)
+    end
+  end
+
+  describe 'check_first_sub_bar_link_text method' do
+    it "returns 'Most recent' if @most_recent = true" do
+      expect(check_first_sub_bar_link_text(true)).to eq 'Most recent'
+    end
+
+    it "returns 'Most ancient' if @most_recent = false" do
+      expect(check_first_sub_bar_link_text(false)).to eq 'Most ancient'
+    end
+  end
+
+  describe 'check_second_sub_bar_link method' do
+    it 'returns a path that contains most_recent=false if @most_recent = true' do
+      expect(check_second_sub_bar_link(true)).to match(/most_recent=false/)
+    end
+
+    it 'returns a path that contains most_recent=true if @most_recent = false' do
+      expect(check_second_sub_bar_link(false)).to match(/most_recent=true/)
+    end
+  end
+
+  describe 'check_second_sub_bar_link_text method' do
+    it "returns 'Most ancient' if @most_recent = true" do
+      expect(check_second_sub_bar_link_text(true)).to eq 'Most ancient'
+    end
+
+    it "returns 'Most recent' if @most_recent = false" do
+      expect(check_second_sub_bar_link_text(false)).to eq 'Most recent'
+    end
+  end
 end

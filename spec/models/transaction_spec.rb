@@ -13,6 +13,11 @@ RSpec.describe Transaction, type: :model do
         expect(transaction.valid?).to eq true
       end
 
+      it 'validates a transaction with a negative amount' do
+        transaction.amount = -5
+        expect(transaction._validators?).to eq(true)
+      end
+
       it 'rejects a transaction with a non existent user id' do
         transaction.author_id = 3459
         expect(transaction.valid?).to eq false
