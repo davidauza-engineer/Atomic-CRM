@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # transactions
   resources :transactions, only: [:index, :show]
   get 'transactions/search', to: 'transactions#search'
-  get '/transactions/uncategorized', to: 'transactions#uncategorized'
+  get '/transactions/category/uncategorized', to: 'transactions#uncategorized'
   # categories
   get '/categories', to: 'categories#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
