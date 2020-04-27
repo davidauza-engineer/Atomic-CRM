@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_155829) do
+ActiveRecord::Schema.define(version: 2020_04_27_160415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_155829) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.string "name", limit: 255, default: "My transaction", null: false
     t.text "description", default: "", null: false
     t.decimal "amount", precision: 15, scale: 2, default: "0.0", null: false
