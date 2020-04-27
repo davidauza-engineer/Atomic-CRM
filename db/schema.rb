@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_153755) do
+ActiveRecord::Schema.define(version: 2020_04_27_155829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2020_04_27_153755) do
     t.string "icon", limit: 255, default: "my_custom_category.svg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories_transactions", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "transaction_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_categories_transactions_on_category_id"
+    t.index ["transaction_id"], name: "index_categories_transactions_on_transaction_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -42,5 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_153755) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "categories_transactions", "categories"
+  add_foreign_key "categories_transactions", "transactions"
   add_foreign_key "transactions", "users", column: "author_id"
 end
