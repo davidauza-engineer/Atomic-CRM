@@ -5,6 +5,9 @@ class Transaction < ApplicationRecord
   validates :amount, format: { with: AMOUNT_FORMAT_REGEX }
 
   belongs_to :user, foreign_key: :author_id, inverse_of: :transactions
+  has_many :categories_transactions, dependent: :destroy, foreign_key: :transaction_id,
+                                     inverse_of: :transaction_
+  has_many :categories, through: :categories_transactions
 
   scope :newest_first, -> { order(created_at: :desc) }
   scope :oldest_first, -> { order(created_at: :asc) }
