@@ -6,5 +6,6 @@ class Transaction < ApplicationRecord
 
   belongs_to :user, foreign_key: :author_id, inverse_of: :transactions
 
-  scope :newest_first, -> { order(created_at: :asc) }
+  scope :newest_first, -> { order(created_at: :desc) }
+  scope :oldest_first, -> { order(created_at: :asc) }
 end

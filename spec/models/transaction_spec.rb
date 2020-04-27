@@ -90,4 +90,25 @@ RSpec.describe Transaction, type: :model do
       expect(stored_transaction.user).to eq user
     end
   end
+
+  describe 'Scopes' do
+    let(:second_transaction) { user.transactions.build }
+
+    before do
+      transaction.save
+      second_transaction.save
+    end
+
+    context 'with newest_first scope' do
+      it 'returns the transactions sorted by newest first' do
+        expect(user.transactions.newest_first.first).to eq(second_transaction)
+      end
+    end
+
+    context 'with oldest_first scope' do
+      it 'returns the transactions sorted by oldest first' do
+        expect(user.transactions.oldest_first.first).to eq(transaction)
+      end
+    end
+  end
 end

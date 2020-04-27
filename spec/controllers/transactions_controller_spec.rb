@@ -10,6 +10,12 @@ RSpec.describe TransactionsController do
     end
 
     describe 'index action' do
+      before do
+        user = User.find(session[:user_id])
+        user.transactions.create(amount: 77)
+        user.transactions.create(amount: -5)
+      end
+
       it 'displays the right title' do
         get :index
         expect(response.body).to match(/All my transactions | Atomic CRM/)
@@ -31,11 +37,18 @@ RSpec.describe TransactionsController do
       end
 
       it "appropriately calculates the user's total amount" do
-        user = User.find(session[:user_id])
-        user.transactions.create(amount: 77)
-        user.transactions.create(amount: -5)
         get :index
         expect(controller.total_balance).to eq(72.0)
+      end
+
+      it "gets user's transactions sorted by newest first when most_recent = true" do
+        get :index
+        expect(controller.user_transactions.first.amount.to_f).to eq(-5.0)
+      end
+
+      it "gets user's transactions sorted by oldest first when most_recent = false" do
+        get :index, params: { most_recent: false }
+        expect(controller.user_transactions.first.amount.to_f).to eq(77)
       end
     end
 
