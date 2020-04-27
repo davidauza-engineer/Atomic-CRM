@@ -14,7 +14,7 @@ RSpec.describe 'transactions/index.html.erb', type: :view do
   end
 
   it 'contains a link to transactions/search' do
-    expect(rendered).to match(/#{transactions_search_path}/)
+    expect(rendered).to match(/#{transactions_actions_search_path}/)
   end
 
   it 'contains a link to most_recent=true' do
