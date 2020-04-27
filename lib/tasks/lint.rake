@@ -11,5 +11,6 @@ namespace :lint do
 
   task javascript: :environment do
     sh 'npx eslint app/javascript'
+    sh 'npx eslint stylelint.config.js'
   end
 end
