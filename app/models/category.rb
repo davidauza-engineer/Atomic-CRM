@@ -4,4 +4,5 @@ class Category < ApplicationRecord
   # a method already defined by Active Record.
   has_many :transaction_s, through: :categories_transactions, class_name: 'Transaction',
                            foreign_key: :id
+  # TODO: finish associations and corresponding tests
 end

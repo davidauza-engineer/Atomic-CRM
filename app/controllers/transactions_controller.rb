@@ -1,9 +1,11 @@
 class TransactionsController < ApplicationController
   before_action :authorize
+  # TODO: Urgent! Analize and implement authorization restrictions
 
   attr_reader :most_recent
   attr_reader :total_balance
   attr_reader :user_transactions
+  attr_reader :user_transactions_categories
 
   def index
     @most_recent = true
@@ -12,6 +14,8 @@ class TransactionsController < ApplicationController
     @user_transactions =
       @most_recent ? user.transactions.newest_first : user.transactions.oldest_first
     @total_balance = @user_transactions.sum(:amount)
+    @user_transactions_categories =
+      @user_transactions.includes(:categories).map(&:categories)
   end
 
   def show

@@ -13,7 +13,9 @@ RSpec.describe TransactionsController do
       before do
         user = User.find(session[:user_id])
         user.transactions.create(amount: 77)
-        user.transactions.create(amount: -5)
+        second_transaction = user.transactions.create(amount: -5)
+        category = Category.create(name: 'Test category')
+        CategoryTransaction.create(category_id: category.id, transaction_id: second_transaction.id)
       end
 
       it 'displays the right title' do
@@ -49,6 +51,12 @@ RSpec.describe TransactionsController do
       it "gets user's transactions sorted by oldest first when most_recent = false" do
         get :index, params: { most_recent: false }
         expect(controller.user_transactions.first.amount.to_f).to eq(77)
+      end
+
+      it 'correctly creates user_transactions_category array' do
+        get :index
+        transaction = Transaction.find_by(amount: -5)
+        expect(controller.user_transactions_categories[0]).to eq(transaction.categories)
       end
     end
 

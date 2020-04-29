@@ -50,4 +50,28 @@ RSpec.describe TransactionsHelper, type: :helper do
       expect(check_second_sub_bar_link_text(false)).to eq 'Most recent'
     end
   end
+
+  describe 'category? method' do
+    let(:transaction_categories) { [[], [Category.new]] }
+
+    it 'returns uncategorized-background if transaction has no category' do
+      expect(category?(transaction_categories[0])).to eq('uncategorized-background')
+    end
+
+    it 'returns category-background if transaction has any category' do
+      expect(category?(transaction_categories[1])).to eq('category-background')
+    end
+  end
+
+  describe 'transaction_icon method' do
+    let(:transaction_categories) { [[], [Category.new(icon: 'test_icon.svg'), Category.new]] }
+
+    it 'returns all_my_uncategorized_transactions.svg if the transaction has no categories' do
+      expect(transaction_icon(transaction_categories[0])).to eq('all_my_uncategorized_transactions.svg')
+    end
+
+    it 'returns the icon of the first category if the transaction has any category' do
+      expect(transaction_icon(transaction_categories[1])).to eq('test_icon.svg')
+    end
+  end
 end

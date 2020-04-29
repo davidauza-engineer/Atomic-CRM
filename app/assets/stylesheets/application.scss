@@ -198,10 +198,6 @@ input {
   }
 }
 
-.cards-collection {
-  //padding-top: 470px;
-}
-
 .card {
   margin: $medium-margin $medium-margin 0 $medium-margin;
   color: $atomic-light-gray;
@@ -211,7 +207,6 @@ input {
   }
 
   .card-category-image-container {
-    background-color: $atomic-purple-light;
     width: 25%;
     height: 0;
     padding-top: 12.5%;
@@ -244,4 +239,12 @@ input {
   &:hover {
     background-color: $atomic-purple-light;
   }
+}
+
+.uncategorized-background {
+  background-color: $atomic-purple-light;
+}
+
+.category-background {
+  background-color: $atomic-purple-medium;
 }

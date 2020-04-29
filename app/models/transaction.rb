@@ -8,6 +8,7 @@ class Transaction < ApplicationRecord
   has_many :categories_transactions, dependent: :destroy, foreign_key: :transaction_id,
                                      inverse_of: :transaction_
   has_many :categories, through: :categories_transactions
+  # TODO finish associations and corresponding tests
 
   scope :newest_first, -> { order(created_at: :desc) }
   scope :oldest_first, -> { order(created_at: :asc) }
