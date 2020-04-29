@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rubocop-rspec'
   # RSpec and Capybara related gems
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
