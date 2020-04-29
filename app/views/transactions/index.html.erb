@@ -1,44 +1,43 @@
 <%= provide(:title, 'All my transactions') %>
 <div class="page-view transactions-view">
 
-  <div class="sticky-top">
-    <h1 class="title top-bar-title">TRANSACTIONS</h1>
-    <div class="atomic-purple d-flex flex-column">
-      <div class="d-flex top-bar align-items-center justify-content-between">
-        <a href="<%= root_path %>" class="top-bar-link">
-          <%= display_svg('menu.svg') %>
-        </a>
-        <a href="<%= transactions_actions_search_path %>" class="top-bar-link">
-          <%= display_svg('search.svg') %>
-        </a>
-      </div>
+  <h1 class="title top-bar-title">TRANSACTIONS</h1>
+  <div class="atomic-purple d-flex flex-column">
+    <div class="d-flex top-bar align-items-center justify-content-between">
+      <a href="<%= root_path %>" class="top-bar-link">
+        <%= display_svg('menu.svg') %>
+      </a>
+      <a href="<%= transactions_actions_search_path %>" class="top-bar-link">
+        <%= display_svg('search.svg') %>
+      </a>
+    </div>
 
-      <div class="d-flex sub-bar justify-content-center">
-        <a href="<%= check_first_sub_bar_link(@most_recent) %>"
-           class="d-flex flex-column align-items-center sub-bar-link">
+    <div class="d-flex sub-bar justify-content-center">
+      <a href="<%= check_first_sub_bar_link(@most_recent) %>"
+         class="d-flex flex-column align-items-center sub-bar-link">
           <span class="sub-bar-text">
             <%= check_first_sub_bar_link_text(@most_recent) %>
           </span>
-          <span class="sub-bar-dot"></span>
-        </a>
-      </div>
-      <a href="<%= check_second_sub_bar_link(@most_recent) %>"
-         class="d-flex flex-column align-items-center sub-bar-second-link
+        <span class="sub-bar-dot"></span>
+      </a>
+    </div>
+    <a href="<%= check_second_sub_bar_link(@most_recent) %>"
+       class="d-flex flex-column align-items-center sub-bar-second-link
       sub-bar-link">
         <span class="sub-bar-text">
           <%= check_second_sub_bar_link_text(@most_recent) %>
         </span>
-        <span class="sub-bar-dot"></span>
-      </a>
-    </div>
+      <span class="sub-bar-dot"></span>
+    </a>
+  </div>
 
-    <div class="d-flex justify-content-between wide-card">
-      <span>Total balance</span>
-      <span class="amount">
+  <div class="d-flex justify-content-between wide-card">
+    <span>Total balance</span>
+    <span class="amount">
         $<%= truncate(number_with_delimiter(@total_balance).to_s, length: 20) %>
       </span>
-    </div>
   </div>
+
 
   <!--  TODO test cards-->
   <div class="cards-collection">
