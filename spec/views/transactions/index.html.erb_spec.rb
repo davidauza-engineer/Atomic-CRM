@@ -31,14 +31,15 @@ RSpec.describe 'transactions/index.html.erb', type: :view do
   end
 
   describe 'transaction cards' do
-
     shared_examples 'card content' do
       it 'displays the transaction name' do
         expect(rendered).to match(/Test Transaction/)
       end
 
       it 'displays the transaction created_at date in a dd Mon yy format' do
+        # rubocop:disable RSpec/InstanceVariable
         expect(rendered).to match(/#{@user_transaction.created_at.strftime("%d %b %Y")}/)
+        # rubocop:enable RSpec/InstanceVariable
       end
 
       it "displays the transaction's amount" do
@@ -47,7 +48,6 @@ RSpec.describe 'transactions/index.html.erb', type: :view do
     end
 
     context 'with uncategorized transaction' do
-
       it_behaves_like 'card content'
 
       it "contains an uncategorized-background css class for the icon's transaction" do
@@ -56,7 +56,6 @@ RSpec.describe 'transactions/index.html.erb', type: :view do
     end
 
     context 'with categorized transaction' do
-
       it_behaves_like 'card content'
 
       it "contains a category-background css class for the icon's transaction" do

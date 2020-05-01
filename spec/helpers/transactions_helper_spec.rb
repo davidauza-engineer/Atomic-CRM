@@ -67,7 +67,8 @@ RSpec.describe TransactionsHelper, type: :helper do
     let(:transaction_categories) { [[], [Category.new(icon: 'test_icon.svg'), Category.new]] }
 
     it 'returns all_my_uncategorized_transactions.svg if the transaction has no categories' do
-      expect(transaction_icon(transaction_categories[0])).to eq('all_my_uncategorized_transactions.svg')
+      expect(transaction_icon(transaction_categories[0])).to
+      eq('all_my_uncategorized_transactions.svg')
     end
 
     it 'returns the icon of the first category if the transaction has any category' do
