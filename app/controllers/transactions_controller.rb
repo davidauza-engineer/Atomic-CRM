@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
   attr_reader :total_balance
   attr_reader :user_transactions
   attr_reader :user_transactions_categories
+  attr_accessor :categories
 
   def index
     @most_recent = true
@@ -20,6 +21,24 @@ class TransactionsController < ApplicationController
 
   def show
     @transaction = Transaction.find(params[:id])
+    @categories_transactions = @transaction.categories_transactions
+    @icon = @categories_transactions.empty? ? 'all_my_uncategorized_transactions.svg' : Category.find(@categories_transactions.main).icon
+  end
+
+  def new
+    @transaction = Transaction.new
+    @categories = []
+    @categories = Category.all unless Category.all.nil?
+    # @categories += current_user.categories unless current_user.categories.nil?
+  end
+
+  def create
+    @transaction = Transaction.new(transaction_params)
+    if @transaction.save
+      redirect_to transaction_path(@transaction.id), notice: 'Transaction created!'
+    else
+      render :new
+    end
   end
 
   def uncategorized; end
@@ -27,5 +46,11 @@ class TransactionsController < ApplicationController
   def search
     flash.notice = 'Search feature will be available soon.'
     redirect_to transactions_url
+  end
+
+  private
+
+  def transaction_params
+    params.require(:transaction).permit(:name, :description, :amount)
   end
 end

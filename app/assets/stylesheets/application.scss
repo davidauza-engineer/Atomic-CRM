@@ -79,6 +79,10 @@ input {
   color: $atomic-light-gray;
 }
 
+.bg-atomic-orange {
+  background-color: $atomic-orange;
+}
+
 .page-view {
   min-height: 100vh;
   background-color: $atomic-purple-light;
@@ -198,6 +202,24 @@ input {
   }
 }
 
+.details-third-row {
+  padding: $large-margin 0;
+
+  h2 {
+    font-size: $font-small;
+    color: $atomic-dark-gray;
+  }
+
+  .details-card-date-container {
+    margin-top: $double-margin;
+  }
+
+  time {
+    font-size: $font-extra-small;
+    padding-left: $standard-margin;
+  }
+}
+
 .card {
   margin: $medium-margin $medium-margin 0 $medium-margin;
   color: $atomic-light-gray;
@@ -247,4 +269,68 @@ input {
 
 .category-background {
   background-color: $atomic-purple-medium;
+}
+
+.details-card-first-row {
+  margin-bottom: $medium-margin;
+}
+
+.details-card-image-container {
+  width: 20%;
+  height: 0;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.details-card-title {
+  width: 80%;
+  padding-left: $medium-margin;
+  font-size: $font-small;
+  color: $atomic-dark-gray;
+}
+
+.details-card-second-row {
+  font-size: $font-extra-small;
+  padding-bottom: $medium-margin;
+}
+
+.details-card-divider {
+  border-bottom: 1px solid $atomic-light-gray;
+}
+
+.details-fourth-row {
+  font-size: $font-small;
+  color: $atomic-dark-gray;
+  padding-top: $large-margin;
+  padding-bottom: $double-margin;
+  font-weight: 500;
+}
+
+.action-button-container {
+  padding: $large-margin;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.action-button {
+  width: 100%;
+  border: 2px solid white;
+  font-size: $font-large;
+  padding: $medium-margin 0;
+  color: white;
+  font-weight: 400;
+  border-radius: 10px;
+  text-align: center;
+}
+
+@media (orientation: landscape) {
+  .action-button-container {
+    padding: $double-margin;
+  }
+
+  .action-button {
+    padding: $standard-margin 0;
+    font-size: $font-medium;
+  }
 }
