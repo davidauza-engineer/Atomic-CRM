@@ -11,5 +11,6 @@ namespace :fix do
 
   task javascript: :environment do
     sh 'npx eslint app/javascript --fix'
+    sh 'npx eslint stylelint.config.js --fix'
   end
 end
