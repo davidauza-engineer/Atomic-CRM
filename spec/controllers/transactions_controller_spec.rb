@@ -29,12 +29,12 @@ RSpec.describe TransactionsController do
       end
 
       it 'sets @most_recent to true if receives the param most_recent=true' do
-        get :index, params: {most_recent: true}
+        get :index, params: { most_recent: true }
         expect(controller.most_recent).to eq true
       end
 
       it 'sets @most_recent to false if receives the param most_recent=false' do
-        get :index, params: {most_recent: false}
+        get :index, params: { most_recent: false }
         expect(controller.most_recent).to eq false
       end
 
@@ -49,7 +49,7 @@ RSpec.describe TransactionsController do
       end
 
       it "gets user's transactions sorted by oldest first when most_recent = false" do
-        get :index, params: {most_recent: false}
+        get :index, params: { most_recent: false }
         expect(controller.user_transactions.first.amount.to_f).to eq(77)
       end
 
@@ -66,7 +66,7 @@ RSpec.describe TransactionsController do
       let(:category) { FactoryBot.create(:category, user: user) }
 
       before do
-        get :show, params: {id: transaction.id}
+        get :show, params: { id: transaction.id }
       end
 
       it 'assigns requested transaction to @transaction' do
