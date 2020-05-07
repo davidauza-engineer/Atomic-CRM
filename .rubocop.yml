@@ -64,3 +64,10 @@ Layout/MultilineMethodCallIndentation:
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*
+
+Capybara/FeatureMethods:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/features/*

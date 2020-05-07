@@ -5,4 +5,6 @@ class Category < ApplicationRecord
   has_many :transaction_s, through: :categories_transactions, class_name: 'Transaction',
                            foreign_key: :id
   # TODO: finish associations and corresponding tests
+
+  belongs_to :user
 end

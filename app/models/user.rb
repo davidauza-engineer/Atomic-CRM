@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   has_many :transactions, dependent: :destroy, foreign_key: :author_id, inverse_of: :user
+
+  has_many :categories, dependent: :destroy
 end

@@ -29,12 +29,12 @@ RSpec.describe TransactionsController do
       end
 
       it 'sets @most_recent to true if receives the param most_recent=true' do
-        get :index, params: { most_recent: true }
+        get :index, params: {most_recent: true}
         expect(controller.most_recent).to eq true
       end
 
       it 'sets @most_recent to false if receives the param most_recent=false' do
-        get :index, params: { most_recent: false }
+        get :index, params: {most_recent: false}
         expect(controller.most_recent).to eq false
       end
 
@@ -49,7 +49,7 @@ RSpec.describe TransactionsController do
       end
 
       it "gets user's transactions sorted by oldest first when most_recent = false" do
-        get :index, params: { most_recent: false }
+        get :index, params: {most_recent: false}
         expect(controller.user_transactions.first.amount.to_f).to eq(77)
       end
 
@@ -57,6 +57,43 @@ RSpec.describe TransactionsController do
         get :index
         transaction = Transaction.find_by(amount: -5)
         expect(controller.user_transactions_categories[0]).to eq(transaction.categories)
+      end
+    end
+
+    describe 'GET show' do
+      let(:user) { FactoryBot.create(:user) }
+      let(:transaction) { FactoryBot.create(:transaction, user: user) }
+      let(:category) { FactoryBot.create(:category, user: user) }
+
+      before do
+        get :show, params: {id: transaction.id}
+      end
+
+      it 'assigns requested transaction to @transaction' do
+        expect(assigns(:transaction)).to eq(transaction)
+      end
+
+      it 'assigns an empty collection to @categories_transactions when there are no
+      categories_transactions' do
+        expect(assigns(:categories_transactions)).to be_empty
+      end
+
+      it "assigns 'all_my_uncategorized_transactions.svg' to @icon when there are no
+      categories_transactions" do
+        expect(assigns(:icon)).to eq('all_my_uncategorized_transactions.svg')
+      end
+
+      it 'assigns the existing category_transaction to @categories_transactions when there is a
+      category_transaction' do
+        category_transaction = CategoryTransaction.create(category_id: category.id,
+                                                          transaction_id: transaction.id)
+        expect(assigns(:categories_transactions)).to include(category_transaction)
+      end
+
+      it 'assigns the corresponding category icon to @icon when there is a category_transaction'
+
+      it 'renders :show template' do
+        expect(response).to render_template(:show)
       end
     end
 

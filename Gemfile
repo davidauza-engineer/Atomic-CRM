@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.7'
 # Bootstrap 4 Setup
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+# Simple Form
+gem 'simple_form'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -43,6 +45,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
