@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile'
   get 'uploadpicture', to: 'users#upload_picture'
   # transactions
-  resources :transactions, only: [:index, :show]
+  resources :transactions, only: [:index, :show, :new, :create]
   get 'transactions/actions/search', to: 'transactions#search'
   get '/transactions/category/uncategorized', to: 'transactions#uncategorized'
   # categories

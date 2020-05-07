@@ -38,8 +38,6 @@
       </span>
   </div>
 
-
-  <!--  TODO test cards-->
   <div class="cards-collection">
     <%= render 'layouts/notifications' %>
     <% @user_transactions.each_with_index do |transaction, index| %>
@@ -53,7 +51,7 @@
             <div class="card-details-container d-flex flex-column
             justify-content-between">
               <h1>
-                <%= truncate(transaction.name, length: 35) %>
+                <%= truncate(transaction.name, length: 32) %>
               </h1>
               <time datetime="<%= transaction.created_at %>">
                 <%= transaction.created_at.strftime("%d %b %Y") %>
@@ -70,4 +68,9 @@
     <% end %>
   </div>
 
+</div>
+
+<div class="action-button-container d-flex justify-content-center align-items-center
+bg-atomic-orange fixed-footer">
+  <%= link_to 'ADD NEW', new_transaction_path, class: 'action-button bg-atomic-orange' %>
 </div>
