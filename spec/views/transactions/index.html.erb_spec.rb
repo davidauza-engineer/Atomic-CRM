@@ -65,4 +65,14 @@ RSpec.describe 'transactions/index.html.erb', type: :view do
       end
     end
   end
+
+  describe 'ADD NEW button' do
+    it 'contains an ADD NEW text' do
+      expect(rendered).to match(/ADD NEW/)
+    end
+
+    it 'contains a link to new_transaction_path' do
+      expect(rendered).to match(/transactions\/new/)
+    end
+  end
 end
