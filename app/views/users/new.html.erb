@@ -1,5 +1,7 @@
 <% provide(:title, 'Sign Up') %>
+
 <div class="page-view">
+
   <h1 class="title top-bar-title">REGISTER</h1>
   <div class="d-flex top-bar atomic-purple align-items-center justify-content-between">
     <a href="<%= root_url %>" class="top-bar-link">
@@ -19,6 +21,7 @@
       </ul>
     </div>
   <% end %>
+
   <div class="form-container">
     <%= form_with model: @user, local: true, class: 'form', id: 'sign-up-form' do |f| %>
       <a href="<%= '/uploadpicture' %>" class="form-input d-flex align-items-center picture-anchor">
@@ -33,4 +36,5 @@
       <%= f.password_field :password, placeholder: 'Password', class: 'form-input' %>
     <% end %>
   </div>
+
 </div>
