@@ -1,0 +1,48 @@
+<% provide(:title, 'New transaction') %>
+<div class="page-view">
+
+  <h1 class="title top-bar-title">NEW TRANSACTION</h1>
+  <div class="d-flex top-bar atomic-purple align-items-center justify-content-between">
+    <a href="<%= transactions_path %>" class="top-bar-link">
+      <%= display_svg('white_back_arrow.svg') %>
+    </a>
+    <%= submit_tag 'Create', form: 'new-transaction-form', class: 'top-bar-link top-bar-action' %>
+  </div>
+
+  <%= render 'layouts/notifications' %>
+  <% if @transaction.errors.any? %>
+    <div class="alert alert-danger">
+      <h1>Form is invalid</h1>
+      <ul>
+        <% @transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-container">
+    <%= form_with model: @transaction, local: true, class: 'form', id: 'new-transaction-form' do |f| %>
+      <%= f.text_field :name, placeholder: 'Transaction name', value: transaction_name_value(@transaction), class: 'form-input' %>
+      <div class="form-divider"></div>
+      <%= f.text_area :description, placeholder: 'Transaction description', class: 'form-input form-text-area' %>
+      <div class="form-divider"></div>
+      <%= f.label :amount, 'Transaction amount', class: 'form-label' %>
+      <%= f.number_field :amount, step: :any, value: transaction_amount_value(@transaction), placeholder: '0.00', class: 'form-input pt-0' %>
+      <div class="form-divider"></div>
+      <%= f.label :categories, class: 'form-label' %>
+      <div class="form-input">
+        <% @available_categories.each do |category| %>
+          <div class="check-box-container">
+            <%= f.fields_for :categories_transactions, CategoryTransaction.new(category_id: category.id) do |category_transaction_form| %>
+              <%= category_transaction_form.hidden_field :category_id %>
+              <%= category_transaction_form.check_box :selected %>
+              <%= category_transaction_form.label :selected, truncate(category.name, length: 32), class: 'form-check-box-label' %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

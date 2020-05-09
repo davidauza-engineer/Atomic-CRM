@@ -30,16 +30,15 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @categories = []
-    @categories = Category.all unless Category.all.nil?
-    # @categories += current_user.categories unless current_user.categories.nil?
+    @available_categories = fetch_categories
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.build(transaction_params)
     if @transaction.save
-      redirect_to transaction_path(@transaction.id), notice: 'Transaction created!'
+      redirect_to transactions_url, notice: 'Transaction created successfully.'
     else
+      @available_categories = fetch_categories
       render :new
     end
   end
@@ -54,6 +53,25 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:name, :description, :amount)
+    filtered_params = params.require(:transaction)
+      .permit(:name, :description, :amount,
+              categories_transactions_attributes: %i[category_id selected])
+    # Remove the params for the categories_transactions_attributes which the user hasn't checked in
+    # the form
+    filtered_params[:categories_transactions_attributes].each do |category_transaction|
+      if category_transaction[1][:selected] == '0'
+        filtered_params[:categories_transactions_attributes].delete(category_transaction[0])
+      end
+    end
+    filtered_params
+  end
+
+  def fetch_categories
+    # Load default categories created by the admin
+    available_categories = Category.where('user_id = ?', 1)
+    # Load categories created by the user
+    active_user = current_user
+    available_categories += Category.where('user_id = ?', active_user.id) unless active_user.id == 1
+    available_categories
   end
 end

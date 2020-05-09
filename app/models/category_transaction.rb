@@ -9,4 +9,6 @@ class CategoryTransaction < ApplicationRecord
 
   scope :main, -> { order(created_at: :asc).limit(1).first.category_id }
   default_scope { order(created_at: :asc) }
+
+  attr_accessor :selected
 end

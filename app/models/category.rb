@@ -7,4 +7,6 @@ class Category < ApplicationRecord
   # TODO: finish associations and corresponding tests
 
   belongs_to :user
+
+  default_scope { order(created_at: :asc) }
 end

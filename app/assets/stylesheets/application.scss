@@ -74,6 +74,10 @@ input[type="checkbox"] {
 .alert {
   margin-bottom: 0;
   font-size: $font-small;
+
+  h1 {
+    font-size: $font-small;
+  }
 }
 
 .atomic-purple {

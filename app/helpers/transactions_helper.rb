@@ -34,4 +34,14 @@ module TransactionsHelper
 
     transact_categories.first.icon
   end
+
+  def transaction_name_value(transaction)
+    (transaction.name unless transaction.name == 'My transaction') || ''
+  end
+
+  def transaction_amount_value(transaction)
+    # rubocop:disable Style/NumericPredicate
+    (transaction.amount unless transaction.amount == 0) || 0.00
+    # rubocop:enable Style/NumericPredicate
+  end
 end
