@@ -39,7 +39,9 @@
 
       <div class="details-fourth-row d-flex justify-content-between">
         <span>TOTAL AMOUNT</span>
-        <span>$<%= @transaction.amount %></span>
+        <span>
+          $<%= truncate(number_with_delimiter(@transaction.amount).to_s, length: 20) %>
+        </span>
       </div>
     </div>
   </section>
