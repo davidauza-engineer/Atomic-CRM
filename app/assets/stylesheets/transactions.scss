@@ -6,3 +6,8 @@
 .transactions-view {
   padding-bottom: $extra-large-margin;
 }
+
+.transactions-index-view {
+  // Enough space to be able to see the last card.
+  padding-bottom: 270px;
+}

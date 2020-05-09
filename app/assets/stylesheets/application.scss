@@ -54,6 +54,11 @@ input {
   border: none;
 }
 
+input[type="checkbox"] {
+  width: 48px;
+  height: 48px;
+}
+
 ::placeholder {
   color: $atomic-light-gray;
 }
@@ -116,6 +121,7 @@ input {
   color: white;
   font-size: $font-small;
   padding-top: 4px;
+  padding-right: $double-margin;
 }
 
 .sub-bar {
@@ -168,6 +174,16 @@ input {
   background-color: white;
 }
 
+.form-label {
+  display: block;
+  font-size: $font-medium;
+  width: 100%;
+  padding: $medium-margin 0 0 $medium-margin;
+  margin: 0;
+  border: none;
+  color: $atomic-light-gray;
+}
+
 .form-input {
   display: block;
   font-size: $font-medium;
@@ -178,10 +194,25 @@ input {
   color: $atomic-dark-gray;
 }
 
+.form-text-area {
+  margin-top: $standard-margin;
+  margin-bottom: $standard-margin;
+}
+
 .form-divider {
   height: 1px;
   background-color: $atomic-light-gray;
   margin-left: $medium-margin;
+}
+
+.check-box-container {
+  margin-right: $medium-margin;
+  margin-bottom: $standard-margin;
+}
+
+.form-check-box-label {
+  font-size: $font-medium;
+  color: $atomic-light-gray;
 }
 
 .wide-card {
