@@ -72,10 +72,10 @@ class TransactionsController < ApplicationController
 
   def fetch_categories
     # Load default categories created by the admin
-    available_categories = Category.where('user_id = ?', 1)
+    available_categories = Category.defaults
     # Load categories created by the user
     active_user = current_user
-    available_categories += Category.where('user_id = ?', active_user.id) unless active_user.id == 1
+    available_categories += Category.created_by(active_user) unless active_user.id == 1
     available_categories
   end
 end

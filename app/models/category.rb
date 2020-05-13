@@ -9,4 +9,6 @@ class Category < ApplicationRecord
   belongs_to :user
 
   default_scope { order(created_at: :asc) }
+  scope :defaults, -> { where('user_id = ?', 1) }
+  scope :created_by, ->(user) { where('user_id = ?', user.id) }
 end
