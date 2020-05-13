@@ -28,7 +28,7 @@ RSpec.feature 'create transaction' do
     expect(page).to have_content('NEW TRANSACTION')
 
     new_transaction_form.fill_in_with(
-      FactoryBot.attributes_for(:transaction, name: 'Last transaction')
+        FactoryBot.attributes_for(:transaction, name: 'Last transaction')
     ).submit
     expect(page).to have_content('Transaction created successfully.')
     expect(page).to have_content('DETAILS')
