@@ -72,7 +72,7 @@ RSpec.describe 'transactions/index.html.erb', type: :view do
     end
 
     it 'contains a link to new_transaction_path' do
-      expect(rendered).to match(/transactions\/new/)
+      expect(rendered).to match(%r{transactions/new})
     end
   end
 end

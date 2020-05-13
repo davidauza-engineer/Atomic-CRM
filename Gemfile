@@ -41,9 +41,9 @@ group :development, :test do
   gem 'rubocop-rspec'
   # RSpec and Capybara related gems
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
 end
 
 group :development do

@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
   attr_reader :total_balance
   attr_reader :user_transactions
   attr_reader :user_transactions_categories
+  attr_reader :transaction
 
   def index
     @most_recent = true
@@ -34,9 +35,9 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = current_user.transactions.build(transaction_params)
+    @transaction = current_user.transactions.build(remove_unselected_categories(transaction_params))
     if @transaction.save
-      redirect_to transactions_url, notice: 'Transaction created successfully.'
+      redirect_to transaction_url(@transaction), notice: 'Transaction created successfully.'
     else
       @available_categories = fetch_categories
       render :new
@@ -53,17 +54,20 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    filtered_params = params.require(:transaction)
-      .permit(:name, :description, :amount,
-              categories_transactions_attributes: %i[category_id selected])
-    # Remove the params for the categories_transactions_attributes which the user hasn't checked in
-    # the form
-    filtered_params[:categories_transactions_attributes].each do |category_transaction|
+    params.require(:transaction).permit(
+      :name, :description, :amount, categories_transactions_attributes: %i[category_id selected]
+    )
+  end
+
+  # This method removes the params for the categories_transactions_attributes that
+  # the user hasn't checked in the form
+  def remove_unselected_categories(params)
+    params[:categories_transactions_attributes].each do |category_transaction|
       if category_transaction[1][:selected] == '0'
-        filtered_params[:categories_transactions_attributes].delete(category_transaction[0])
+        params[:categories_transactions_attributes].delete(category_transaction[0])
       end
     end
-    filtered_params
+    params
   end
 
   def fetch_categories

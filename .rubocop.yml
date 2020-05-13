@@ -71,3 +71,10 @@ Capybara/FeatureMethods:
 RSpec/ExampleLength:
   Exclude:
     - spec/features/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/features/*
+
+RSpec/NestedGroups:
+  Max: 4
