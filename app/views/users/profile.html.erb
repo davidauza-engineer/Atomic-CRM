@@ -1,0 +1,38 @@
+<% provide(:title, 'Profile') %>
+
+<div class="profile-view">
+  <%= render 'layouts/notifications' %>
+  <div class="profile-content-container">
+
+    <div class="d-flex justify-content-center">
+      <%= display_svg('user_large.svg') %>
+    </div>
+    <div class="d-flex">
+      <span class="mx-auto profile-name"><%= @user.name %></span>
+    </div>
+
+    <nav class="d-flex flex-column profile-nav">
+      <a href="<%= transactions_path %>" class="profile-links d-inline-flex align-items-center">
+        <%= display_svg('all_my_transactions.svg') %>
+        <span class="profile-links-text mt-3">All my transactions</span>
+      </a>
+      <div class="profile-divider"></div>
+      <a href="<%= transactions_category_uncategorized_path %>" class="profile-links d-flex align-items-center">
+        <%= display_svg('all_my_uncategorized_transactions.svg') %>
+        <span class="profile-links-text mt-3">All my uncategorized transactions</span>
+      </a>
+      <div class="profile-divider"></div>
+      <a href="<%= categories_path %>" class="profile-links d-flex align-items-center">
+        <%= display_svg('all_categories.svg') %>
+        <span class="profile-links-text mt-1">All categories</span>
+      </a>
+      <div class="profile-divider"></div>
+      <a href="<%= logout_path %>" class="profile-links d-flex align-items-center"
+         rel="nofollow" data-method="delete">
+        <%= display_svg('logout.svg') %>
+        <span class="profile-links-text">Logout</span>
+      </a>
+    </nav>
+
+  </div>
+</div>

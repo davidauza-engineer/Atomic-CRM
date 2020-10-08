@@ -1,0 +1,49 @@
+<% provide(:title, @transaction.name) %>
+<h1 class="title top-bar-title">DETAILS</h1>
+<div class="page-view transactions-view">
+  <div class="d-flex top-bar atomic-purple align-items-center justify-content-between">
+    <a href="<%= transactions_path %>" class="top-bar-link" id='Go back'>
+      <%= display_svg('white_back_arrow.svg') %>
+    </a>
+  </div>
+
+  <%= render 'layouts/notifications' %>
+
+  <section class="card">
+    <div class="card-content-container">
+      <div class="d-flex align-items-center details-card-first-row">
+        <div class="details-card-image-container d-flex justify-content-center
+        align-items-center <%= category?(@categories_transactions) %>">
+          <%= display_svg(@icon) %>
+        </div>
+        <h1 class="details-card-title"><%= @transaction.name %></h1>
+      </div>
+
+      <div class="details-card-second-row">
+        <p><%= @transaction.description %></p>
+      </div>
+
+      <div class="details-card-divider"></div>
+
+      <div class="details-third-row">
+        <h2>Transaction Nº<%= @transaction.id %></h2>
+        <div class="d-flex align-items-center details-card-date-container">
+          <%= display_svg('calendar.svg') %>
+          <time datetime="<%= @transaction.created_at %>">
+            <%= @transaction.created_at.strftime('%d %b %Y at %I:%M%P') %>
+          </time>
+        </div>
+      </div>
+
+      <div class="details-card-divider"></div>
+
+      <div class="details-fourth-row d-flex justify-content-between">
+        <span>TOTAL AMOUNT</span>
+        <span>
+          $<%= truncate(number_with_delimiter(@transaction.amount).to_s, length: 20) %>
+        </span>
+      </div>
+    </div>
+  </section>
+
+</div>

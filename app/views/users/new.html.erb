@@ -1,0 +1,40 @@
+<% provide(:title, 'Sign Up') %>
+
+<div class="page-view">
+
+  <h1 class="title top-bar-title">REGISTER</h1>
+  <div class="d-flex top-bar atomic-purple align-items-center justify-content-between">
+    <a href="<%= root_url %>" class="top-bar-link">
+      <%= display_svg('white_back_arrow.svg') %>
+    </a>
+    <%= submit_tag 'Next', form: 'sign-up-form', class: 'top-bar-link top-bar-action' %>
+  </div>
+
+  <%= render 'layouts/notifications' %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h1>Form is invalid</h1>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-container">
+    <%= form_with model: @user, local: true, class: 'form', id: 'sign-up-form' do |f| %>
+      <a href="<%= '/uploadpicture' %>" class="form-input d-flex align-items-center picture-anchor">
+        <%= display_svg('user_small.svg') %>
+        <span class="atomic-light-gray picture-upload-text">Upload picture (coming soon...)</span>
+      </a>
+      <div class="form-divider"></div>
+      <%= f.text_field :name, placeholder: 'Full name', class: 'form-input' %>
+      <div class="form-divider"></div>
+      <%= f.email_field :email, placeholder: 'Email', class: 'form-input' %>
+      <div class="form-divider"></div>
+      <%= f.password_field :password, placeholder: 'Password', class: 'form-input' %>
+    <% end %>
+  </div>
+
+</div>

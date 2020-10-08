@@ -1,0 +1,13 @@
+// Place all the styles related to the Transactions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "application";
+
+.transactions-view {
+  padding-bottom: $extra-large-margin;
+}
+
+.transactions-index-view {
+  // Enough space to be able to see the last card.
+  padding-bottom: 270px;
+}

@@ -1,0 +1,76 @@
+<%= provide(:title, 'All my transactions') %>
+<div class="page-view transactions-index-view">
+
+  <h1 class="title top-bar-title">TRANSACTIONS</h1>
+  <div class="atomic-purple d-flex flex-column">
+    <div class="d-flex top-bar align-items-center justify-content-between">
+      <a href="<%= root_path %>" class="top-bar-link">
+        <%= display_svg('menu.svg') %>
+      </a>
+      <a href="<%= transactions_actions_search_path %>" class="top-bar-link">
+        <%= display_svg('search.svg') %>
+      </a>
+    </div>
+
+    <div class="d-flex sub-bar justify-content-center">
+      <a href="<%= check_first_sub_bar_link(@most_recent) %>"
+         class="d-flex flex-column align-items-center sub-bar-link">
+          <span class="sub-bar-text">
+            <%= check_first_sub_bar_link_text(@most_recent) %>
+          </span>
+        <span class="sub-bar-dot"></span>
+      </a>
+    </div>
+    <a href="<%= check_second_sub_bar_link(@most_recent) %>"
+       class="d-flex flex-column align-items-center sub-bar-second-link
+      sub-bar-link">
+        <span class="sub-bar-text">
+          <%= check_second_sub_bar_link_text(@most_recent) %>
+        </span>
+      <span class="sub-bar-dot"></span>
+    </a>
+  </div>
+
+  <div class="d-flex justify-content-between wide-card">
+    <span>Total balance</span>
+    <span class="amount">
+        $<%= truncate(number_with_delimiter(@total_balance).to_s, length: 20) %>
+      </span>
+  </div>
+
+  <div class="cards-collection">
+    <%= render 'layouts/notifications' %>
+    <% @user_transactions.each_with_index do |transaction, index| %>
+      <a href="<%= "/transactions/#{transaction.id}" %>">
+        <section class="card">
+          <div class="card-content-container d-flex">
+            <div class="card-category-image-container d-flex align-items-center
+            justify-content-center <%= category?(@user_transactions_categories[index]) %>">
+              <%= display_svg(transaction_icon(@user_transactions_categories[index])) %>
+            </div>
+            <div class="card-details-container d-flex flex-column
+            justify-content-between">
+              <h1>
+                <%= truncate(transaction.name, length: 32) %>
+              </h1>
+              <time datetime="<%= transaction.created_at %>">
+                <%= transaction.created_at.strftime("%d %b %Y") %>
+              </time>
+            </div>
+            <div class="card-amount-container d-flex ml-auto justify-content-end">
+              <span>
+                $<%= truncate(number_with_delimiter(transaction.amount).to_s, length: 8) %>
+              </span>
+            </div>
+          </div>
+        </section>
+      </a>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="action-button-container d-flex justify-content-center align-items-center
+bg-atomic-orange fixed-footer">
+  <%= link_to 'ADD NEW', new_transaction_path, class: 'action-button bg-atomic-orange' %>
+</div>

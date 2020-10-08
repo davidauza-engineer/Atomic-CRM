@@ -1,0 +1,80 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - "db/**/*"
+    - "bin/*"
+    - "config/**/*"
+    - "Guardfile"
+    - "Rakefile"
+    - "README.md"
+    - "node_modules/**/*"
+    - 'script/**/*'
+    - 'bin/**/*'
+
+  DisplayCopNames: true
+
+Layout/LineLength:
+  Max: 100
+Metrics/MethodLength:
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 20
+Metrics/AbcSize:
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 50
+Metrics/ClassLength:
+  Max: 150
+Metrics/BlockLength:
+  ExcludedMethods: ['describe']
+  Max: 30
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/EachForSimpleLoop:
+  Enabled: false
+Style/AndOr:
+  Enabled: false
+Style/DefWithParentheses:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Layout/HashAlignment:
+  EnforcedColonStyle: key
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Capybara/FeatureMethods:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/features/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/features/*
+
+RSpec/NestedGroups:
+  Max: 4

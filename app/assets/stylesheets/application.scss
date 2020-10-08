@@ -1,0 +1,371 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+/* variables */
+$atomic-purple: #8e24aa;
+$atomic-purple-medium: rgba(142, 36, 170, 0.8);
+$atomic-purple-light: rgba(142, 36, 170, 0.1);
+$atomic-orange: #ff7043;
+$atomic-dark-gray: #545454;
+$atomic-light-gray: #737373;
+
+$standard-margin: 8px;
+$double-margin: 16px;
+$triple-margin: 24px;
+$medium-margin: 32px;
+$large-margin: 40px;
+$extra-large-margin: 64px;
+
+$font-extra-small: 40px;
+$font-small: 48px;
+$font-medium: 54px;
+$font-large: 56px;
+$font-extra-large: 64px;
+
+/* Tags */
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+input {
+  background-color: transparent;
+  border: none;
+}
+
+input[type="checkbox"] {
+  width: 48px;
+  height: 48px;
+}
+
+::placeholder {
+  color: $atomic-light-gray;
+}
+
+/* Classes */
+
+.gray-link {
+  &:hover {
+    color: $atomic-light-gray;
+  }
+}
+
+.alert {
+  margin-bottom: 0;
+  font-size: $font-small;
+
+  h1 {
+    font-size: $font-small;
+  }
+}
+
+.atomic-purple {
+  background-color: $atomic-purple;
+}
+
+.atomic-light-gray {
+  color: $atomic-light-gray;
+}
+
+.bg-atomic-orange {
+  background-color: $atomic-orange;
+}
+
+.page-view {
+  min-height: 100vh;
+  background-color: $atomic-purple-light;
+}
+
+.title {
+  color: white;
+  font-size: $font-large;
+}
+
+.top-bar {
+  padding: $triple-margin $standard-margin;
+}
+
+.top-bar-title {
+  position: absolute;
+  top: 39px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.top-bar-link {
+  position: relative;
+  z-index: 2;
+}
+
+.top-bar-action {
+  color: white;
+  font-size: $font-small;
+  padding-top: 4px;
+  padding-right: $double-margin;
+}
+
+.sub-bar {
+  padding-top: $double-margin;
+  padding-bottom: $triple-margin;
+}
+
+.sub-bar-link {
+  padding: $standard-margin;
+}
+
+.sub-bar-text {
+  color: white;
+  font-size: $font-small;
+}
+
+.sub-bar-dot {
+  background-color: white;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.sub-bar-second-link {
+  position: absolute;
+  // 24px(top bar margin top) + 96px (vector width) + 24px (top bar margin bottom)
+  // + 16px (sub bar margin top) = 160px
+  top: 160px;
+  right: $triple-margin;
+  z-index: 3;
+
+  span {
+    color: darkgray;
+  }
+
+  .sub-bar-dot {
+    visibility: hidden;
+  }
+}
+
+.form-container {
+  padding-bottom: 2 * $extra-large-margin;
+  background-color: transparent;
+}
+
+.form {
+  margin-top: $extra-large-margin;
+  border-top: 1px solid $atomic-light-gray;
+  border-bottom: 1px solid $atomic-light-gray;
+  background-color: white;
+}
+
+.form-label {
+  display: block;
+  font-size: $font-medium;
+  width: 100%;
+  padding: $medium-margin 0 0 $medium-margin;
+  margin: 0;
+  border: none;
+  color: $atomic-light-gray;
+}
+
+.form-input {
+  display: block;
+  font-size: $font-medium;
+  width: 100%;
+  padding: $medium-margin 0 $medium-margin $medium-margin;
+  margin: 0;
+  border: none;
+  color: $atomic-dark-gray;
+}
+
+.form-text-area {
+  margin-top: $standard-margin;
+  margin-bottom: $standard-margin;
+}
+
+.form-divider {
+  height: 1px;
+  background-color: $atomic-light-gray;
+  margin-left: $medium-margin;
+}
+
+.check-box-container {
+  margin-right: $medium-margin;
+  margin-bottom: $standard-margin;
+}
+
+.form-check-box-label {
+  font-size: $font-medium;
+  color: $atomic-light-gray;
+}
+
+.wide-card {
+  background-color: white;
+  padding: ($extra-large-margin - 8px) $triple-margin;
+  border-bottom: 2px solid $atomic-light-gray;
+
+  span {
+    font-size: $font-small;
+    color: $atomic-light-gray;
+
+    &:nth-child(2) {
+      color: black;
+      font-weight: 600;
+      max-width: 60%;
+      text-align: right;
+    }
+  }
+}
+
+.details-third-row {
+  padding: $large-margin 0;
+
+  h2 {
+    font-size: $font-small;
+    color: $atomic-dark-gray;
+  }
+
+  .details-card-date-container {
+    margin-top: $double-margin;
+  }
+
+  time {
+    font-size: $font-extra-small;
+    padding-left: $standard-margin;
+  }
+}
+
+.card {
+  margin: $medium-margin $medium-margin 0 $medium-margin;
+  color: $atomic-light-gray;
+
+  .card-content-container {
+    padding: $medium-margin;
+  }
+
+  .card-category-image-container {
+    width: 25%;
+    height: 0;
+    padding-top: 12.5%;
+    padding-bottom: 12.5%;
+  }
+
+  .card-details-container {
+    width: 55%;
+    padding-left: $medium-margin;
+    padding-right: $medium-margin;
+
+    h1 {
+      font-size: $font-small;
+      font-weight: 500;
+    }
+
+    time {
+      font-size: $font-extra-small;
+    }
+  }
+
+  .card-amount-container {
+    width: 20%;
+    color: black;
+    font-weight: 600;
+    font-size: $font-extra-small;
+    padding-top: $standard-margin;
+  }
+
+  &:hover {
+    background-color: $atomic-purple-light;
+  }
+}
+
+.uncategorized-background {
+  background-color: $atomic-purple-light;
+}
+
+.category-background {
+  background-color: $atomic-purple-medium;
+}
+
+.details-card-first-row {
+  margin-bottom: $medium-margin;
+}
+
+.details-card-image-container {
+  width: 20%;
+  height: 0;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.details-card-title {
+  width: 80%;
+  padding-left: $medium-margin;
+  font-size: $font-small;
+  color: $atomic-dark-gray;
+}
+
+.details-card-second-row {
+  font-size: $font-extra-small;
+  padding-bottom: $medium-margin;
+}
+
+.details-card-divider {
+  border-bottom: 1px solid $atomic-light-gray;
+}
+
+.details-fourth-row {
+  font-size: $font-small;
+  color: $atomic-dark-gray;
+  padding-top: $large-margin;
+  padding-bottom: $double-margin;
+  font-weight: 500;
+}
+
+.action-button-container {
+  padding: $large-margin;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.action-button {
+  width: 100%;
+  border: 4px solid white;
+  font-size: $font-large;
+  padding: $medium-margin 0;
+  color: white;
+  font-weight: 400;
+  border-radius: 10px;
+  text-align: center;
+}
+
+@media (orientation: landscape) {
+  .action-button-container {
+    padding: $double-margin;
+  }
+
+  .action-button {
+    padding: $standard-margin 0;
+    font-size: $font-small;
+  }
+}
